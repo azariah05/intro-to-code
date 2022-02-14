@@ -1,5 +1,5 @@
 const cl = console.log;
-
+const ct = console.table;
 // function card(value, name, suit) {
 //   this.value = value;
 //   this.name = name;
@@ -89,6 +89,7 @@ let getRankName = function (rank) {
       return rank.toString();
   }
 };
+
 let dealCard = function () {
   let i = Math.floor(Math.random() * deck.length);
   let card = deck.splice(i, 1)[0];
@@ -110,17 +111,30 @@ let players = {
 };
 for (let i = 0; i < 2; i++) {
   players.player.push(dealCard());
-  players.cpu1.push(dealCard);
-  players.cpu2.push(dealCard);
-  players.cpu3.push(dealCard);
-  players.cpu4.push(dealCard);
-  players.cpu5.push(dealCard);
-  players.cpu6.push(dealCard);
-  players.cpu7.push(dealCard);
-  players.cpu8.push(dealCard);
-  players.cpu9.push(dealCard);
+  players.cpu1.push(dealCard());
+  players.cpu2.push(dealCard());
+  players.cpu3.push(dealCard());
+  players.cpu4.push(dealCard());
+  players.cpu5.push(dealCard());
+  players.cpu6.push(dealCard());
+  players.cpu7.push(dealCard());
+  players.cpu8.push(dealCard());
+  players.cpu9.push(dealCard());
 }
+
 cl(deck.length);
-console.table(players.player);
-// console.table(deck);
-let userrps = process.argv[2];
+ct(players.player);
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+readline.question(`do you want another card?`, (name) => {
+  if ((name = "yes")) {
+    players.player.push(dealCard());
+    ct(players.player);
+  } else {
+    cl("ok");
+  }
+  readline.close();
+});

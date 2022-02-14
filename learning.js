@@ -6,8 +6,8 @@ let cl = console.log;
 // console.log( 843-364-7079 );
 // let five = 5;
 // console.log(five ** five);
-// let y = 1; 
-// y = 2; 
+// let y = 1;
+// y = 2;
 // {
 // let y = 3;
 // cl(y);
@@ -24,13 +24,12 @@ let cl = console.log;
 // if (day === 4) {
 // if (hour < 15){
 //     cl("get to sheep")
-// } else { 
+// } else {
 //     cl("time to rest")
 // }
 
 //  for (let count = 1; count < 100000000000000000000000000000000000; count++) {
 //      cl(count);
-
 
 // for (let index = 0; index < 6; index++) {
 //     let str1 = "#"
@@ -39,9 +38,8 @@ let cl = console.log;
 // }
 // for (let index =  ; index < 10; index++) {
 //     cl(index ** 5)
-    
-// }=
 
+// }=
 
 // for (let index = 0; index < 7; index++) {
 //     let index = "fizz"
@@ -54,7 +52,6 @@ let cl = console.log;
 //     tree += "fizz";
 //     }
 // cl("fizz");
-
 
 // while (true) {
 // cl("hello!");
@@ -77,7 +74,7 @@ let cl = console.log;
 // let name = "azariah wallace";
 // for (let index = 0; index < name.length; index++) {
 //     cl(name[index])
-    
+
 // }
 
 // cl(name[0])
@@ -87,11 +84,11 @@ let cl = console.log;
 //         continue;
 //     }
 //     cl(i);
-// create it 
+// create it
 // let fun = function() {
 // cl("function says hello");
 // }
-// call it 
+// call it
 // fun();
 // let getgreeting = function(){
 //     return "hello from function";
@@ -101,8 +98,6 @@ let cl = console.log;
 
 // let greeting = getgreeting();
 // cl(greeting)
-
-
 
 // let greet = function(name) {
 //     return "hello " + name;
@@ -125,8 +120,6 @@ let cl = console.log;
 // let b = function() {}
 // function a() {}
 // let c = () => {}
-
-
 
 // let myarray = []
 // let a = new Array();
@@ -157,7 +150,6 @@ let cl = console.log;
 // o.age = 16;
 // cl(o);
 
-
 //  let o = {
 //      name: "azariah",
 //      age: 16
@@ -167,5 +159,12 @@ let cl = console.log;
 // you can't loop objects
 // console.table(o)
 
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-
+readline.question(`What's your name?`, (name) => {
+  console.log(`Hi ${name}!`);
+  readline.close();
+});
