@@ -122,19 +122,132 @@ for (let i = 0; i < 2; i++) {
   players.cpu9.push(dealCard());
 }
 
-cl(deck.length);
-ct(players.player);
-const readline = require("readline").createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+let handValue1 = 0;
+for (let i = 0; i < players.cpu1.length; i++) {
+  handValue1 += players.cpu1[i].rank;
+}
+let handValue2 = 0;
+for (let i = 0; i < players.cpu2.length; i++) {
+  handValue2 += players.cpu2[i].rank;
+}
+let handValue3 = 0;
+for (let i = 0; i < players.cpu3.length; i++) {
+  handValue3 += players.cpu3[i].rank;
+}
+let handValue4 = 0;
+for (let i = 0; i < players.cpu4.length; i++) {
+  handValue4 += players.cpu4[i].rank;
+}
+let handValue5 = 0;
+for (let i = 0; i < players.cpu5.length; i++) {
+  handValue5 += players.cpu5[i].rank;
+}
+let handValue6 = 0;
+for (let i = 0; i < players.cpu6.length; i++) {
+  handValue6 += players.cpu6[i].rank;
+}
+let handValue7 = 0;
+for (let i = 0; i < players.cpu7.length; i++) {
+  handValue7 += players.cpu7[i].rank;
+}
+let handValue8 = 0;
+for (let i = 0; i < players.cpu8.length; i++) {
+  handValue8 += players.cpu8[i].rank;
+}
+let handValue9 = 0;
+for (let i = 0; i < players.cpu9.length; i++) {
+  handValue9 += players.cpu9[i].rank;
+}
 
-readline.question(`do you want another card?`, (name) => {
-  if ((name = "yes")) {
-    players.player.push(dealCard());
-    ct(players.player);
-  } else {
-    cl("ok");
+let hitCpu1 = function () {
+  if (handValue1 < 21) {
+    players.cpu1.push(dealCard());
   }
-  readline.close();
-});
+};
+let hitCpu2 = function () {
+  if (handValue2 < 19) {
+    players.cpu2.push(dealCard());
+  }
+};
+let hitCpu3 = function () {
+  if (handValue3 < 18) {
+    players.cpu3.push(dealCard());
+  }
+};
+let hitCpu4 = function () {
+  if (handValue4 < 17) {
+    players.cpu4.push(dealCard());
+  }
+};
+let hitCpu5 = function () {
+  if (handValue5 < 16) {
+    players.cpu5.push(dealCard());
+  }
+};
+let hitCpu6 = function () {
+  if (handValue6 < 15) {
+    players.cpu6.push(dealCard());
+  }
+};
+let hitCpu7 = function () {
+  if (handValue7 < 14) {
+    players.cpu7.push(dealCard());
+  }
+};
+let hitCpu8 = function () {
+  if (handValue8 < 14) {
+    players.cpu8.push(dealCard());
+  }
+};
+let hitCpu9 = function () {
+  if (handValue9 < 13) {
+    players.cpu9.push(dealCard());
+  }
+};
+
+let hitallCpu = function () {
+  hitCpu1();
+  hitCpu2();
+  hitCpu3();
+  hitCpu4();
+  hitCpu5();
+  hitCpu6();
+  hitCpu7();
+  hitCpu8();
+};
+
+hitallCpu();
+
+cl(handValue1);
+// cl(deck.length);
+ct(players.player);
+let handValue = 0;
+for (let i = 0; i < players.player.length; i++) {
+  handValue += players.player[i].rank;
+}
+
+const hitMe = function () {
+  const readline = require("readline").createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  readline.question(`do you want another card?`, (name) => {
+    switch (name) {
+      case "yes":
+        players.player.push(dealCard());
+        ct(players.player);
+        cl(handValue);
+        readline.close();
+        break;
+      case "no":
+        cl("ok");
+        cl(handValue);
+        readline.close();
+        break;
+      default:
+        cl("Not an option");
+    }
+  });
+};
+hitMe();
