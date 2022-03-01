@@ -1,50 +1,5 @@
 const cl = console.log;
 const ct = console.table;
-// function card(value, name, suit) {
-//   this.value = value;
-//   this.name = name;
-//   this.suit = suit;
-// }
-
-// function deck() {
-//   this.names = [
-//     "ace",
-//     "2",
-//     "3",
-//     "4",
-//     "5",
-//     "6",
-//     "7",
-//     "8",
-//     "9",
-//     "10",
-//     "Jack",
-//     "Queen",
-//     "King",
-//   ];
-//   this.suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
-//   let cards = [];
-
-//   for (let s = 0; s < this.suits.length; s++) {
-//     for (let n = 0; n < this.names.length; n++) {
-//       cards.push(new card(n + 1, this.names[n], this.suits[s]));
-//     }
-//   }
-//   return cards;
-// }
-// let myDeck = new deck();
-
-// function shuffle(o) {
-//   for (
-//     let j, x, i = o.length;
-//     i;
-//     j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x
-//   );
-//   return o;
-// }
-
-// myDeck = shuffle(myDeck);
-// cl(myDeck);
 
 let buildDeck = function () {
   let deck = [];
@@ -122,132 +77,162 @@ for (let i = 0; i < 2; i++) {
   players.cpu9.push(dealCard());
 }
 
-let handValue1 = 0;
-for (let i = 0; i < players.cpu1.length; i++) {
-  handValue1 += players.cpu1[i].rank;
-}
-let handValue2 = 0;
-for (let i = 0; i < players.cpu2.length; i++) {
-  handValue2 += players.cpu2[i].rank;
-}
-let handValue3 = 0;
-for (let i = 0; i < players.cpu3.length; i++) {
-  handValue3 += players.cpu3[i].rank;
-}
-let handValue4 = 0;
-for (let i = 0; i < players.cpu4.length; i++) {
-  handValue4 += players.cpu4[i].rank;
-}
-let handValue5 = 0;
-for (let i = 0; i < players.cpu5.length; i++) {
-  handValue5 += players.cpu5[i].rank;
-}
-let handValue6 = 0;
-for (let i = 0; i < players.cpu6.length; i++) {
-  handValue6 += players.cpu6[i].rank;
-}
-let handValue7 = 0;
-for (let i = 0; i < players.cpu7.length; i++) {
-  handValue7 += players.cpu7[i].rank;
-}
-let handValue8 = 0;
-for (let i = 0; i < players.cpu8.length; i++) {
-  handValue8 += players.cpu8[i].rank;
-}
-let handValue9 = 0;
-for (let i = 0; i < players.cpu9.length; i++) {
-  handValue9 += players.cpu9[i].rank;
-}
+let getHandValue = function (cpu) {
+  let handValue1 = 0;
+  for (let i = 0; i < players.cpu1.length; i++) {
+    handValue1 += players.cpu1[i].rank;
+  }
+  let handValue2 = 0;
+  for (let i = 0; i < players.cpu2.length; i++) {
+    handValue2 += players.cpu2[i].rank;
+  }
+  let handValue3 = 0;
+  for (let i = 0; i < players.cpu3.length; i++) {
+    handValue3 += players.cpu3[i].rank;
+  }
+  let handValue4 = 0;
+  for (let i = 0; i < players.cpu4.length; i++) {
+    handValue4 += players.cpu4[i].rank;
+  }
+  let handValue5 = 0;
+  for (let i = 0; i < players.cpu5.length; i++) {
+    handValue5 += players.cpu5[i].rank;
+  }
+  let handValue6 = 0;
+  for (let i = 0; i < players.cpu6.length; i++) {
+    handValue6 += players.cpu6[i].rank;
+  }
+  let handValue7 = 0;
+  for (let i = 0; i < players.cpu7.length; i++) {
+    handValue7 += players.cpu7[i].rank;
+  }
+  let handValue8 = 0;
+  for (let i = 0; i < players.cpu8.length; i++) {
+    handValue8 += players.cpu8[i].rank;
+  }
+  let handValue9 = 0;
+  for (let i = 0; i < players.cpu9.length; i++) {
+    handValue9 += players.cpu9[i].rank;
+  }
+  switch (cpu) {
+    case 1:
+      return handValue1;
+    case 2:
+      return handValue2;
+    case 3:
+      return handValue3;
+    case 4:
+      return handValue4;
+    case 5:
+      return handValue5;
+    case 6:
+      return handValue6;
+    case 7:
+      return handValue7;
+    case 8:
+      return handValue8;
+    case 9:
+      return handValue9;
+    default:
+      break;
+  }
+};
+let hitCpu = function (cpu) {
+  switch (cpu) {
+    case 1:
+      if (getHandValue(1) < 21) {
+        players.cpu1.push(dealCard());
+      }
+      break;
+    case 2:
+      if (getHandValue(2) < 19) {
+        players.cpu2.push(dealCard());
+      }
+      break;
+    case 3:
+      if (getHandValue(3) < 18) {
+        players.cpu3.push(dealCard());
+      }
+      break;
+    case 4:
+      if (getHandValue(4) < 17) {
+        players.cpu4.push(dealCard());
+      }
+      break;
+    case 5:
+      if (getHandValue(5) < 16) {
+        players.cpu5.push(dealCard());
+      }
+      break;
+    case 6:
+      if (getHandValue(6) < 15) {
+        players.cpu6.push(dealCard());
+      }
+      break;
+    case 7:
+      if (getHandValue(7) < 14) {
+        players.cpu7.push(dealCard());
+      }
+      break;
+    case 8:
+      if (getHandValue(8) < 14) {
+        players.cpu8.push(dealCard());
+      }
+      break;
+    case 9:
+      if (getHandValue(9) < 13) {
+        players.cpu9.push(dealCard());
+      }
+      break;
+    default:
+      return;
+  }
+};
 
-let hitCpu1 = function () {
-  if (handValue1 < 21) {
-    players.cpu1.push(dealCard());
-  }
-};
-let hitCpu2 = function () {
-  if (handValue2 < 19) {
-    players.cpu2.push(dealCard());
-  }
-};
-let hitCpu3 = function () {
-  if (handValue3 < 18) {
-    players.cpu3.push(dealCard());
-  }
-};
-let hitCpu4 = function () {
-  if (handValue4 < 17) {
-    players.cpu4.push(dealCard());
-  }
-};
-let hitCpu5 = function () {
-  if (handValue5 < 16) {
-    players.cpu5.push(dealCard());
-  }
-};
-let hitCpu6 = function () {
-  if (handValue6 < 15) {
-    players.cpu6.push(dealCard());
-  }
-};
-let hitCpu7 = function () {
-  if (handValue7 < 14) {
-    players.cpu7.push(dealCard());
-  }
-};
-let hitCpu8 = function () {
-  if (handValue8 < 14) {
-    players.cpu8.push(dealCard());
-  }
-};
-let hitCpu9 = function () {
-  if (handValue9 < 13) {
-    players.cpu9.push(dealCard());
+let hitAllCpu = function () {
+  for (let i = 1; i <= 9; i++) {
+    hitCpu(i);
   }
 };
 
-let hitallCpu = function () {
-  hitCpu1();
-  hitCpu2();
-  hitCpu3();
-  hitCpu4();
-  hitCpu5();
-  hitCpu6();
-  hitCpu7();
-  hitCpu8();
-};
-
-hitallCpu();
-
-cl(handValue1);
+getHandValue();
+cl(getHandValue(9));
 // cl(deck.length);
+
+const rl = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+rl.on("line", (input) => {
+  fullGame(input);
+});
 ct(players.player);
-let handValue = 0;
-for (let i = 0; i < players.player.length; i++) {
-  handValue += players.player[i].rank;
-}
+rl.setPrompt("Do you want another card (yes, no)?");
+rl.prompt();
 
-const hitMe = function () {
-  const readline = require("readline").createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+const fullGame = function (input) {
+  let handValue = 0;
+  for (let i = 0; i < players.player.length; i++) {
+    handValue += players.player[i].rank;
+  }
+  if (input === "yes") {
+    players.player.push(dealCard());
+    ct(players.player);
+    cl(handValue);
+    rl.pause();
+    rl.prompt();
+  } else if (input === "no") {
+    console.clear();
+    cl("ok");
+    ct(players.player);
+    cl(handValue);
+    rl.pause();
+    hitAllCpu();
+  } else {
+    cl("Not an option");
+  }
 
-  readline.question(`do you want another card?`, (name) => {
-    switch (name) {
-      case "yes":
-        players.player.push(dealCard());
-        ct(players.player);
-        cl(handValue);
-        readline.close();
-        break;
-      case "no":
-        cl("ok");
-        cl(handValue);
-        readline.close();
-        break;
-      default:
-        cl("Not an option");
-    }
-  });
+  rl.resume();
 };
-hitMe();
+
+let getWinner = function () {};
