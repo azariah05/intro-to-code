@@ -3,16 +3,36 @@ const ct = console.table;
 
 let buildDeck = function () {
   let deck = [];
-  for (let rank = 2; rank < 15; rank++) {
-    deck.push(createCard("hearts", rank));
-    deck.push(createCard("spades", rank));
-    deck.push(createCard("diamonds", rank));
-    deck.push(createCard("clubs", rank));
+  for (let rank = 2; rank < 12; rank++) {
+    if (rank > 10) {
+      deck.push(createCard("hearts", 10, "king"));
+      deck.push(createCard("spades", 10, "king"));
+      deck.push(createCard("diamonds", 10, "king"));
+      deck.push(createCard("clubs", 10, "king"));
+      deck.push(createCard("hearts", 10, "queen"));
+      deck.push(createCard("spades", 10, "queen"));
+      deck.push(createCard("diamonds", 10, "queen"));
+      deck.push(createCard("clubs", 10, "queen"));
+      deck.push(createCard("hearts", 10, "jack"));
+      deck.push(createCard("spades", 10, "jack"));
+      deck.push(createCard("diamonds", 10, "jack"));
+      deck.push(createCard("clubs", 10, "jack"));
+      deck.push(createCard("hearts", 11, "ace"));
+      deck.push(createCard("spades", 11, "ace"));
+      deck.push(createCard("diamonds", 11, "ace"));
+      deck.push(createCard("clubs", 11, "ace"));
+    } else {
+      deck.push(createCard("hearts", rank, rank));
+      deck.push(createCard("spades", rank, rank));
+      deck.push(createCard("diamonds", rank, rank));
+      deck.push(createCard("clubs", rank, rank));
+    }
   }
   return deck;
 };
-let createCard = function (suit, rank) {
-  let name = getRankName(rank);
+
+let createCard = function (suit, rank, title) {
+  let name = title.toString();
   let color = getSuitColor(suit);
   let card = {
     rank: rank,
@@ -22,26 +42,53 @@ let createCard = function (suit, rank) {
   };
   return card;
 };
+
+// let buildDeck = function () {
+//   let deck = [];
+//   for (let rank = 2; rank < 15; rank++) {
+//     if (rank > 10) {
+//       deck.push(createCard("hearts", 10, "king"));
+//       deck.push(createCard("spades", 10, "king"));
+//       deck.push(createCard("diamonds", 10, "king"));
+//       deck.push(createCard("clubs", 10, "king"));
+//       deck.push(createCard("hearts", 10, "queen"));
+//       deck.push(createCard("spades", 10, "queen"));
+//       deck.push(createCard("diamonds", 10, "queen"));
+//       deck.push(createCard("clubs", 10, "queen"));
+//       deck.push(createCard("hearts", 10, "jack"));
+//       deck.push(createCard("spades", 10, "jack"));
+//       deck.push(createCard("diamonds", 10, "jack"));
+//       deck.push(createCard("clubs", 10, "jack"));
+//       deck.push(createCard("hearts", 11, "ace"));
+//       deck.push(createCard("spades", 11, "ace"));
+//       deck.push(createCard("diamonds", 11, "ace"));
+//       deck.push(createCard("clubs", 11, "ace"));
+//     } else {
+//       deck.push(createCard("hearts", rank));
+//       deck.push(createCard("spades", rank));
+//       deck.push(createCard("diamonds", rank));
+//       deck.push(createCard("clubs", rank));
+
+//       return deck;
+//     }
+//   }
+// };
+// let createCard = function (suit, rank, title) {
+//   let name = title.toString();
+//   let color = getSuitColor(suit);
+//   let card = {
+//     rank: rank,
+//     suit: suit,
+//     name: name,
+//     color: color,
+//   };
+//   return card;
+// };
 let getSuitColor = function (suit) {
   if (suit === "clubs" || suit === "spades") {
     return "black";
   } else {
     return "red";
-  }
-};
-let getRankName = function (rank) {
-  switch (rank) {
-    case 11:
-      return "jack";
-    case 12:
-      return "queen";
-    case 13:
-      return "king";
-    case 14:
-      return "ace";
-
-    default:
-      return rank.toString();
   }
 };
 
