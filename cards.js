@@ -197,6 +197,7 @@ let hitAllCpu = function () {
 
 getHandValue();
 cl(getHandValue(9));
+
 // cl(deck.length);
 
 const rl = require("readline").createInterface({
@@ -228,11 +229,83 @@ const fullGame = function (input) {
     cl(handValue);
     rl.pause();
     hitAllCpu();
+    let finalResultCheck = function () {
+      let pS = handValue;
+      let dS = getHandValue(1);
+      let dS2 = getHandValue(2);
+      let dS3 = getHandValue(3);
+      let dS4 = getHandValue(4);
+      let dS5 = getHandValue(5);
+      let dS6 = getHandValue(6);
+      let dS7 = getHandValue(7);
+      let dS8 = getHandValue(8);
+      let dS9 = getHandValue(9);
+      if (pS > 21) {
+        if (dS > 21) {
+          if (dS2 > 21) {
+            if (dS3 > 21) {
+              if (dS4 > 21) {
+                if (dS5 > 21) {
+                  if (dS6 > 21) {
+                    if (dS7 > 21) {
+                      if (dS8 > 21) {
+                        if (dS9 > 21) {
+                          return "Tide";
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        } else {
+          return "you lose sucker pay up";
+        }
+      } else if (
+        dS &&
+        dS2 &&
+        dS3 &&
+        dS4 &&
+        dS5 &&
+        dS6 &&
+        dS7 &&
+        dS9 &&
+        dS9 > 21
+      ) {
+        return "you Win way to go champ";
+      } else if (
+        pS > dS &&
+        dS2 &&
+        dS3 &&
+        dS4 &&
+        dS5 &&
+        dS6 &&
+        dS7 &&
+        dS9 &&
+        dS9
+      ) {
+        return "you Win way to go champ";
+      } else if (
+        pS === dS &&
+        dS2 &&
+        dS3 &&
+        dS4 &&
+        dS5 &&
+        dS6 &&
+        dS7 &&
+        dS9 &&
+        dS9
+      ) {
+        return "Tide";
+      } else {
+        return "you lose sucker pay";
+      }
+    };
+    cl(finalResultCheck());
   } else {
     cl("Not an option");
   }
 
   rl.resume();
 };
-
-let getWinner = function () {};
