@@ -230,6 +230,9 @@ const fullGame = function (input) {
     rl.pause();
     rl.prompt();
   } else if (input === "no") {
+    for (let i = 0; i < players.player.length; i++) {
+      handValue += players.player[i].rank;
+    }
     console.clear();
     cl("ok");
     ct(players.player);
@@ -247,20 +250,20 @@ const fullGame = function (input) {
       let dS7 = getHandValue(7);
       let dS8 = getHandValue(8);
       let dS9 = getHandValue(9);
-      if (pS === 21) {
+      if (handValue === 21) {
         return "you win congradulations";
-      } else if (pS > 21) {
+      } else if (handValue > 21) {
         return "sorry you lose";
       } else if (
-        pS > dS &&
-        pS > dS2 &&
-        pS > dS3 &&
-        pS > dS4 &&
-        pS > dS5 &&
-        pS > dS6 &&
-        pS > dS7 &&
-        pS > dS8 &&
-        pS > dS9
+        handValue > dS &&
+        handValue > dS2 &&
+        handValue > dS3 &&
+        handValue > dS4 &&
+        handValue > dS5 &&
+        handValue > dS6 &&
+        handValue > dS7 &&
+        handValue > dS8 &&
+        handValue > dS9
       ) {
         return "you win congadulations";
       } else if (
@@ -276,9 +279,6 @@ const fullGame = function (input) {
       ) {
         return "you tied";
       }
-      // else {
-      //   return "you lose sorry";
-      // }
     };
     cl(finalResultCheck());
   } else {

@@ -247,30 +247,21 @@ const fullGame = function (input) {
       let dS7 = getHandValue(7);
       let dS8 = getHandValue(8);
       let dS9 = getHandValue(9);
-      if (pS > 21) {
-        if (dS > 21) {
-          if (dS2 > 21) {
-            if (dS3 > 21) {
-              if (dS4 > 21) {
-                if (dS5 > 21) {
-                  if (dS6 > 21) {
-                    if (dS7 > 21) {
-                      if (dS8 > 21) {
-                        if (dS9 > 21) {
-                          return "Tide";
-                          //   rl.close();
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        } else {
-          return "you lose sucker pay up";
-          //   rl.close();
-        }
+
+      if (pS === 21) {
+        cl("you win");
+      } else if (
+        pS === dS &&
+        pS === dS2 &&
+        pS === dS3 &&
+        pS === dS4 &&
+        pS === dS5 &&
+        pS === dS6 &&
+        pS === dS7 &&
+        pS === dS8 &&
+        pS === dS9
+      ) {
+        cl("you tied");
       } else if (
         dS > 21 &&
         dS2 > 21 &&
@@ -308,7 +299,7 @@ const fullGame = function (input) {
         pS === dS9 &&
         pS === dS9
       ) {
-        return "Tide";
+        return "Tied";
         // rl.close();
       } else {
         return "you lose sucker pay up";
