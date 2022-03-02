@@ -229,6 +229,7 @@ const fullGame = function (input) {
     cl(handValue);
     rl.pause();
     rl.prompt();
+    rl.resume();
   } else if (input === "no") {
     for (let i = 0; i < players.player.length; i++) {
       handValue += players.player[i].rank;
@@ -239,6 +240,7 @@ const fullGame = function (input) {
     cl(handValue);
     rl.pause();
     hitAllCpu();
+    rl.resume();
     let finalResultCheck = function () {
       let pS = handValue;
       let dS = getHandValue(1);
@@ -251,9 +253,9 @@ const fullGame = function (input) {
       let dS8 = getHandValue(8);
       let dS9 = getHandValue(9);
       if (handValue === 21) {
-        return "you win congradulations blackjack hit controll C to leave";
+        return "you win congradulations blackjack";
       } else if (handValue > 21) {
-        return "sorry you lose your hand was over 21 hit controll C to leave";
+        return "sorry you lose your hand was over 21";
       } else if (
         handValue > dS &&
         handValue > dS2 &&
@@ -265,7 +267,7 @@ const fullGame = function (input) {
         handValue > dS8 &&
         handValue > dS9
       ) {
-        return "you win congadulations you had high card hit controll C to leave";
+        return "you win congadulations you had high card";
       } else if (
         pS === dS &&
         pS === dS2 &&
@@ -277,17 +279,17 @@ const fullGame = function (input) {
         pS === dS8 &&
         pS === dS9
       ) {
-        return "you tied hit controll C to leave";
+        return "you tied";
       } else {
-        return "you lost to a bot ha ha hit controll C to leave";
+        return "you lost to a bot ha ha";
       }
     };
     cl(finalResultCheck());
+    rl.close();
   } else {
     cl("Not an option");
+    rl.resume();
   }
-
-  rl.resume();
 };
 
 rl.on("SIGINT", () => {
