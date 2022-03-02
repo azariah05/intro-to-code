@@ -247,10 +247,43 @@ const fullGame = function (input) {
       let dS7 = getHandValue(7);
       let dS8 = getHandValue(8);
       let dS9 = getHandValue(9);
-      if (pS === 21) {
-        return "you win congradulations";
-      } else if (pS > 21) {
-        return "sorry you lose";
+      if (pS > 21) {
+        if (dS > 21) {
+          if (dS2 > 21) {
+            if (dS3 > 21) {
+              if (dS4 > 21) {
+                if (dS5 > 21) {
+                  if (dS6 > 21) {
+                    if (dS7 > 21) {
+                      if (dS8 > 21) {
+                        if (dS9 > 21) {
+                          return "Tide";
+                          //   rl.close();
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        } else {
+          return "you lose sucker pay up";
+          //   rl.close();
+        }
+      } else if (
+        dS > 21 &&
+        dS2 > 21 &&
+        dS3 > 21 &&
+        dS4 > 21 &&
+        dS5 > 21 &&
+        dS6 > 21 &&
+        dS7 > 21 &&
+        dS9 > 21 &&
+        dS9 > 21
+      ) {
+        return "you Win way to go champ";
+        // rl.close();
       } else if (
         pS > dS &&
         pS > dS2 &&
@@ -259,10 +292,11 @@ const fullGame = function (input) {
         pS > dS5 &&
         pS > dS6 &&
         pS > dS7 &&
-        pS > dS8 &&
+        pS > dS9 &&
         pS > dS9
       ) {
-        return "you win congadulations";
+        return "you Win way to go champ";
+        // rl.close();
       } else if (
         pS === dS &&
         pS === dS2 &&
@@ -271,14 +305,15 @@ const fullGame = function (input) {
         pS === dS5 &&
         pS === dS6 &&
         pS === dS7 &&
-        pS === dS8 &&
+        pS === dS9 &&
         pS === dS9
       ) {
-        return "you tied";
+        return "Tide";
+        // rl.close();
+      } else {
+        return "you lose sucker pay up";
+        // rl.close();
       }
-      // else {
-      //   return "you lose sorry";
-      // }
     };
     cl(finalResultCheck());
   } else {
