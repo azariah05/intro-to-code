@@ -251,9 +251,9 @@ const fullGame = function (input) {
       let dS8 = getHandValue(8);
       let dS9 = getHandValue(9);
       if (handValue === 21) {
-        return "you win congradulations";
+        return "you win congradulations blackjack";
       } else if (handValue > 21) {
-        return "sorry you lose";
+        return "sorry you lose your hand was over 21";
       } else if (
         handValue > dS &&
         handValue > dS2 &&
@@ -278,6 +278,8 @@ const fullGame = function (input) {
         pS === dS9
       ) {
         return "you tied";
+      } else {
+        return "you lost to a bot ha ha";
       }
     };
     cl(finalResultCheck());
