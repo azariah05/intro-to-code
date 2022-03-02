@@ -202,7 +202,7 @@ let hitAllCpu = function () {
 };
 
 getHandValue();
-cl(getHandValue(9));
+// cl(getHandValue(9));
 
 // cl(deck.length);
 
@@ -251,9 +251,9 @@ const fullGame = function (input) {
       let dS8 = getHandValue(8);
       let dS9 = getHandValue(9);
       if (handValue === 21) {
-        return "you win congradulations blackjack";
+        return "you win congradulations blackjack hit controll C to leave";
       } else if (handValue > 21) {
-        return "sorry you lose your hand was over 21";
+        return "sorry you lose your hand was over 21 hit controll C to leave";
       } else if (
         handValue > dS &&
         handValue > dS2 &&
@@ -265,7 +265,7 @@ const fullGame = function (input) {
         handValue > dS8 &&
         handValue > dS9
       ) {
-        return "you win congadulations";
+        return "you win congadulations you had high card hit controll C to leave";
       } else if (
         pS === dS &&
         pS === dS2 &&
@@ -277,9 +277,9 @@ const fullGame = function (input) {
         pS === dS8 &&
         pS === dS9
       ) {
-        return "you tied";
+        return "you tied hit controll C to leave";
       } else {
-        return "you lost to a bot ha ha";
+        return "you lost to a bot ha ha hit controll C to leave";
       }
     };
     cl(finalResultCheck());
@@ -289,3 +289,11 @@ const fullGame = function (input) {
 
   rl.resume();
 };
+
+rl.on("SIGINT", () => {
+  rl.question("\x1b[1m\x1b[0m Exit (y or n)? ", (input) => {
+    if (input.match(/^y(es)?$/i)) {
+      rl.pause();
+    }
+  });
+});
