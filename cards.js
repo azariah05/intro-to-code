@@ -145,36 +145,6 @@ let getHandValue = function (cpu) {
 };
 let hitCpu = function (cpu) {
   switch (cpu) {
-    case 1:
-      if (getHandValue(1) < 21) {
-        players.cpu1.push(dealCard());
-      }
-      break;
-    case 2:
-      if (getHandValue(2) < 19) {
-        players.cpu2.push(dealCard());
-      }
-      break;
-    case 3:
-      if (getHandValue(3) < 18) {
-        players.cpu3.push(dealCard());
-      }
-      break;
-    case 4:
-      if (getHandValue(4) < 17) {
-        players.cpu4.push(dealCard());
-      }
-      break;
-    case 5:
-      if (getHandValue(5) < 16) {
-        players.cpu5.push(dealCard());
-      }
-      break;
-    case 6:
-      if (getHandValue(6) < 15) {
-        players.cpu6.push(dealCard());
-      }
-      break;
     case 7:
       if (getHandValue(7) < 14) {
         players.cpu7.push(dealCard());
@@ -196,7 +166,7 @@ let hitCpu = function (cpu) {
 };
 
 let hitAllCpu = function () {
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 7; i <= 9; i++) {
     hitCpu(i);
   }
 };
@@ -281,6 +251,7 @@ const fullGame = function (input) {
       ) {
         return "you tied";
       } else {
+        cl(dS, dS2, dS3, dS4, dS5, dS6, dS7, dS8, dS9);
         return "you lost to a bot ha ha";
       }
     };
