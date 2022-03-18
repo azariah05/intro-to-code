@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .answers {
+            color: rgba(100, 120, 228, 0.945);
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+    <title>Library Tests</title>
+</head>
+<body>
+    <h1>My Ramen Lovers Page</h1>
+    <p>whats up dude do you like ramen</p>
+
+    <button id="yesButton">Yes</button>
+    <button id="noButton">No</button>
+
+    <div id="yesArea">
+        <p class="answers" id="yesAns">You said yes. You are a normal human being.</p>
+    </div>
+    <div id="noArea">
+        <p class="answers" id="noAns">You said no. what planet are you from monster.</p>
+    </div>
+
+    <script src="lib/jquery.js">
+    </script>
+    <script>
+        $("#yesButton").click(function(){
+            $("#yesAns").fadeIn()
+            $("#noAns").hide()
+        })
+        $("#noButton").click(function(){
+            $("#noAns").fadeIn()
+            $("#yesAns").hide()
+        })
+    </script>
+</body>
+</html>
